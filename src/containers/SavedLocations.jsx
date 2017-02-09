@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { refreshSavedLocation } from '../actions';
 
 import WeatherListItem from '../components/WeatherListItem.jsx';
-import AddLocation from '../components/AddLocation.jsx';
-import Button from '../components/Button.jsx';
+//import AddLocation from '../components/AddLocation.jsx';
+//import Button from '../components/Button.jsx';
 
 const styles = {
     container: {
@@ -31,13 +31,9 @@ class SavedLocations extends Component {
     }
 
     render() {
+        console.log(this.props.locations);
         return (
             <div style={styles.container}>
-                <div style={styles.toolbar}>
-                    <div onPress={() => this.setState({ addingLocation: true })}>
-                        <div style={styles.addLocation}>Add</div>
-                    </div>
-                </div>
                 <WeatherListItem
                     city="Kiev"
                     temperature={5}
@@ -61,23 +57,17 @@ class SavedLocations extends Component {
                     temperature={5}
                     humidity={40}
                     imageType="02d"
-                />
-
-                <AddLocation
-                    visibly={this.state.addingLocation}
-                    onAddLocation={city => this.props.addLocation(city)}
-                    onClose={() => this.setState({ addingLocation: false })}
                 />
             </div>
         );
     }
 }
 
-const getLocationsArray = state => ({
+const getLocationsArray = state => {
     const locations = state.savedLocations;
 
-    return Object.keys(locations).map(id => ({ ...locations[id], id}))
-});
+    return Object.keys(locations).map(id => ({ ...locations[id], id}));
+};
 
 const mapStateToProps = state => ({
     locations: getLocationsArray(state),

@@ -57,10 +57,6 @@ export default class WeatherListItem extends Component {
                         {temperature} C / {humidity}%
                     </div>
                 </div>
-                <div style={styles.toolbar}>
-                    <IconButton name="ios-refresh" />
-                    <IconButton name="ios-trash" />
-                </div>
             </div>
         );
     }
