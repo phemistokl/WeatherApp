@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
+import { routerReducer as routing } from 'react-router-redux'
 
 import {
     FETCH_WEATHER_REQUEST,
     FETCH_WEATHER_SUCCESS,
-    FETCH_WEATHER_FAILURE
+    FETCH_WEATHER_FAILURE,
+    SAVE_LOCATION,
+    REFRESH_SAVED_LOCATION_SUCCESS
 } from '../actions';
 
 // const initialState = {
@@ -46,9 +49,25 @@ import {
 //         }
 //     }
 // }
+function savedLocations(state = {}, action) {
+    //console.log("Saved", state, action);
+    switch (action.type) {
+        case REFRESH_SAVED_LOCATION_SUCCESS:
+        case SAVE_LOCATION: {
+            return {
+                ...state,
+                [action.id]: action.weather,
+            };
+        }
 
-export default function displayedWeather(state = { weather: null, isFetching: false, error: null }, action) {
-    console.log(state, action);
+        default: {
+            return state;
+        }
+    }
+}
+
+function currentWeather(state = { weather: null, isFetching: false, error: null }, action) {
+    console.log("My log", state, action);
     switch (action.type) {
         case FETCH_WEATHER_REQUEST: {
             return {
@@ -61,7 +80,7 @@ export default function displayedWeather(state = { weather: null, isFetching: fa
             return {
                 ...state,
                 isFetching: false,
-                weather: action.wether,
+                weather: action.weather,
             };
         }
 
@@ -96,4 +115,4 @@ export default function displayedWeather(state = { weather: null, isFetching: fa
 //     }
 // }
 //
-// export default combineReducers({ location, locations });
+export default combineReducers({ savedLocations, currentWeather, routing });

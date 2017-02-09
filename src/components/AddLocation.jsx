@@ -62,6 +62,7 @@ export default class AddLocation extends Component {
                   <Button label="Add" />
                   <Button onPress={onClose} label="Cancel" />
               </div>
+          </Modal>    
       );
     }
 }

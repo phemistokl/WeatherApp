@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchWeather } from '../actions';
+import { refreshSavedLocation } from '../actions';
 
 import WeatherListItem from '../components/WeatherListItem.jsx';
 import AddLocation from '../components/AddLocation.jsx';
@@ -21,13 +21,13 @@ const styles = {
     }
 };
 
-class LocationList extends Component {
+class SavedLocations extends Component {
     constructor() {
         super();
+    }
 
-        this.state = {
-            addingLocation: false
-        };
+    componentWillReceiveProps() {
+
     }
 
     render() {
@@ -73,10 +73,14 @@ class LocationList extends Component {
     }
 }
 
-const getLocationsArray = state => Object.keys(state).map(id => ({ ...state[id], id}));
+const getLocationsArray = state => ({
+    const locations = state.savedLocations;
+
+    return Object.keys(locations).map(id => ({ ...locations[id], id}))
+});
 
 const mapStateToProps = state => ({
     locations: getLocationsArray(state),
 });
 
-export default connect(mapStateToProps, { fetchWeather })(LocationsList);
+export default connect(mapStateToProps, { refreshSavedLocation })(SavedLocations);

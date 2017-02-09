@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+//import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = {
     iconButton: {
@@ -9,75 +9,92 @@ const styles = {
 };
 
 export default class WeatherImage extends Component {
-    static weatherType = {
-      '11d': {
-          icon: 'ios-thunderstorm',
-          color: 'steelblue',
-      },
-      '09d': {
-          icon: 'ios-rainy',
-          color: 'lightblue',
-      },
-      '10d': {
-          icon: 'ios-rainy',
-          color: 'lightblue',
-      },
-      '13d': {
-          icon: 'ios-snow',
-          color: 'lightblue',
-      },
-      '50d': {
-          icon: 'ios-thunderstorm',
-          color: 'lightblue',
-      },
+    static weatherTypes = {
       '01d': {
-          icon: 'ios-sunny',
+          icon: '01',
           color: 'gold',
       },
       '01n': {
-          icon: 'ios-sunny',
-          color: 'gold',
+          icon: '01',
+          color: 'grey',
       },
-      '02n': {
-          icon: 'ios-partly-sunny',
+      '02d': {
+          icon: '02',
           color: 'moccasin',
       },
-      '01d': {
-          icon: 'ios-cloud',
-          color: 'lightblue',
+      '02n': {
+          icon: '02',
+          color: 'grey',
       },
-      '01n': {
-          icon: 'ios-cloud',
-          color: 'lightblue',
-      },
-      '03n': {
-          icon: 'ios-cloud',
+      '03d': {
+          icon: '03',
           color: 'lightblue',
       },
       '03n': {
-          icon: 'ios-cloud',
+          icon: '03',
+          color: 'grey',
+      },
+      '04d': {
+          icon: '04',
           color: 'lightblue',
+      },
+      '04n': {
+          icon: '04',
+          color: 'grey',
+      },
+      '09d': {
+          icon: '09',
+          color: 'lightblue',
+      },
+      '09n': {
+          icon: '09',
+          color: 'grey',
+      },
+      '10d': {
+          icon: '10',
+          color: 'lightblue',
+      },
+      '10n': {
+          icon: '10',
+          color: 'grey',
+      },
+      '11d': {
+          icon: '11',
+          color: 'steelblue',
+      },
+      '11n': {
+          icon: '11',
+          color: 'grey',
+      },
+      '13d': {
+          icon: '13',
+          color: 'lightblue',
+      },
+      '13n': {
+          icon: '13',
+          color: 'grey',
       },
       '50d': {
-          icon: 'ios-cloud',
+          icon: '50',
+          color: 'lightblue',
+      },
+      '50n': {
+          icon: '50',
           color: 'grey',
       },
     };
-
     render() {
         const { type, size } = this.props;
+        const src = `icons/sw-${WeatherImage.weatherTypes[type].icon}.svg`;
+        const weatherInfoByType = WeatherImage.weatherTypes[type] || {};
 
         return (
           <div style={{
               padding: 8,
               borderRadius: 5,
-              backgroundColor: WeatherImage.weatherTypes[type].color
+              backgroundColor: weatherInfoByType.color,
           }}>
-            <Icon
-                name={WeatherImage.weatherTypes[type].icon}
-                color="white"
-                size={size}
-            />
+              <img size={size} src={src} alt=""/>
           </div>
         );
     }

@@ -21,18 +21,24 @@ const request = url => {
         });
 }
 
-const formatWeatherinCity = data => ({
+const formatWeather = data => ({
     id: data.id,
     city: data.name,
+    imageType: data.weather[0].icon,
     country: countries[data.sys.country].name,
-    temperature: data.main.temp,
+    temperature: Math.round(data.main.temp),
     humidity: data.main.humidity,
     weatherType: data.weather[0].id,
     weatherName: data.weather[0].main,
     weatherDescription: data.weather[0].description,
 });
 
-export const fetchWeatherInCity = city => {
+export const fetchWeatherByCity = city => {
     return request(`${API_URL}/weather?q=${city}&units=metric&appid=${API_KEY}`)
-        .then(formatWeatherinCity);
+        .then(formatWeather);
+}
+
+export const fetchWeatherById = id => {
+    return request(`${API_URL}/weather?q=${id}&units=metric&appid=${API_KEY}`)
+        .then(formatWeather);
 }

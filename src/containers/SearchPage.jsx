@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchWeatherBySearch } from '../actions';
+import { saveLocation } from '../actions';
 
 import Button from '../components/Button.jsx';
+import WeatherInfo from '../components/WeatherInfo.jsx';
 
 const styles = {
     container: {
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        backgroundColor: '#fff',
         marginTop: 60,
     },
     searchBar: {
@@ -24,6 +25,7 @@ const styles = {
         borderColor: 'lightgray',
         borderWidth: 1,
         borderRadius: 5,
+        backgroundColor: '#fff',
     },
     searchButton: {
         flex: 1,
@@ -49,31 +51,38 @@ class SearchPage extends Component {
     }
 
     handleSearch() {
-        console.log("Hello");
         this.props.fetchWeatherBySearch(this.state.search);
     }
 
     render() {
-        const { weather, handleSearch } = this.props;
+        const { weather, handleSearch, saveLocation } = this.props;
 
         return (
             <div style={styles.container}>
                 <div style={styles.searchBar}>
                     <input style={styles.input} value={this.state.search} onChange={this.handleChange} />
 
-                    <button style={styles.searchButton} onClick={this.handleSearch}>Add</button>
+                    <Button
+                        style={styles.searchButton}
+                        label="Search"
+                        onClick={this.handleSearch}
+                    />
                 </div>
 
-                { weather ? <div>{weather.temperature}</div> : null}
+                { weather ? <WeatherInfo {...weather} onSave={saveLocation} /> : null}
 
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({
-    weather: state.weather,
-    isFetching: state.isFetching,
-});
+const mapStateToProps = state => {
+    console.log(state)
 
-export default connect(mapStateToProps, { fetchWeatherBySearch })(SearchPage);
+    return {
+        weather: state.currentWeather.weather,
+        isFetching: state.currentWeather.isFetching,
+    };
+};
+
+export default connect(mapStateToProps, { fetchWeatherBySearch, saveLocation })(SearchPage);
