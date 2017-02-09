@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --content-base public --debug --hot --output-pathinfo --watch --inline --port 8090",
     "build": "cross-env NODE_ENV=production webpack -p"
   },
-  "author": "",
+  "author": "Albert Kumyshev",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.0",

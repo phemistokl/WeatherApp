@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //import Icon from 'react-native-vector-icons/Ionicons';
 
-import Button from './Button.jsx';
+//import Button from './Button.jsx';
 import WeatherImage from './WeatherImage.jsx';
 
 const styles = {

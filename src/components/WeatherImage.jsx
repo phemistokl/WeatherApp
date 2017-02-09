@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-//import Icon from 'react-native-vector-icons/Ionicons';
-
 const styles = {
     iconButton: {
         padding: 8,

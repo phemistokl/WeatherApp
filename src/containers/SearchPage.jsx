@@ -77,7 +77,6 @@ class SearchPage extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
 
     return {
         weather: state.currentWeather.weather,

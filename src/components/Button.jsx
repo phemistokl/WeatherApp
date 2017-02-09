@@ -4,10 +4,12 @@ const styles = {
     button: {
         padding: 6,
         borderRadius: 5,
-        backgroundColor: 'grey',
-        minWidth: 100,
+        backgroundColor: '#3fc7fa',
+        width: 160,
         margin: 8,
         pointerEvents: "cursor",
+        borderWidth: 0.5,
+        borderColor: '#3fc7fa'
     },
     text: {
         color: 'white',

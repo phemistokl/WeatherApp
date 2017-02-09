@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 
 import { refreshSavedLocation } from '../actions';
 
-import WeatherListItem from '../components/WeatherListItem.jsx';
-//import AddLocation from '../components/AddLocation.jsx';
-//import Button from '../components/Button.jsx';
+import ListView from '../components/ListView.jsx';
 
 const styles = {
     container: {
@@ -22,42 +20,28 @@ const styles = {
 };
 
 class SavedLocations extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dataSource: this.props.locations
+        };
     }
 
-    componentWillReceiveProps() {
-
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.locations !== this.props.locations) {
+            this.setState({
+                dataSource: nextProps.locations
+            });
+        }
     }
 
     render() {
-        console.log(this.props.locations);
         return (
             <div style={styles.container}>
-                <WeatherListItem
-                    city="Kiev"
-                    temperature={5}
-                    humidity={40}
-                    imageType="02d"
-                />
-                <WeatherListItem
-                    city="Kiev"
-                    temperature={5}
-                    humidity={40}
-                    imageType="02d"
-                />
-                <WeatherListItem
-                    city="Kiev"
-                    temperature={5}
-                    humidity={40}
-                    imageType="02d"
-                />
-                <WeatherListItem
-                    city="Kiev"
-                    temperature={5}
-                    humidity={40}
-                    imageType="02d"
-                />
+                    <ListView lists={this.state.dataSource} />
+                )
+
             </div>
         );
     }
