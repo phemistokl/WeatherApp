@@ -17,6 +17,7 @@
     "axios": "^0.15.0",
     "camelcase-keys": "^4.0.0",
     "country-data": "0.0.31",
+    "express": "^4.14.1",
     "material-ui": "^0.16.1",
     "normalize.css": "^5.0.0",
     "react": "^15.3.2",
