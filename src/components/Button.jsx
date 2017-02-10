@@ -5,11 +5,12 @@ const styles = {
         padding: 6,
         borderRadius: 5,
         backgroundColor: '#3fc7fa',
-        width: 160,
+        width: 162,
         margin: 8,
         pointerEvents: "cursor",
         borderWidth: 0.5,
-        borderColor: '#3fc7fa'
+        borderColor: '#3fc7fa',
+        cursor: 'pointer',
     },
     text: {
         color: 'white',
