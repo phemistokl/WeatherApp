@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --content-base public --debug --hot --output-pathinfo --watch --inline --port 8090",
-    "postinstall": "webpack -p --config ./webpack.config.js --progress",
+    "postinstall": "NODE_ENV=production webpack --config ./webpack.config.js --progress --colors",
     "start": "node server.js"
   },
   "author": "Albert Kumyshev",
@@ -32,8 +32,7 @@
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.25"
+    "url-loader": "^0.5.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.0",
