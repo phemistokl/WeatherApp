@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --content-base public --debug --hot --output-pathinfo --watch --inline --port 8090",
-    "postinstall": "webpack -p --config ./webpack.config.js --progress",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "start": "node server.js"
   },
   "author": "Albert Kumyshev",
