@@ -8,8 +8,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base public --debug --hot --output-pathinfo --watch --inline --port 8090",
-    "build": "cross-env NODE_ENV=production webpack -p"
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "start": "node server.js"
   },
   "author": "Albert Kumyshev",
   "license": "ISC",
