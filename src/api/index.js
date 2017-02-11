@@ -1,7 +1,7 @@
 import { countries } from 'country-data';
 
 const API_KEY = 'd2341686276744b6ff8c8d867076041b';
-const API_URL = 'https://api.openweathermap.org/data/2.5';
+const API_URL = 'http://api.openweathermap.org/data/2.5';
 
 const request = url => {
     return fetch(url)
